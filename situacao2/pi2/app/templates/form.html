@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block content %}
+<form method="post" class="form" novalidate>
+<h2>{{ 'Editar chamado' if c.id else 'Novo chamado' }}</h2>
+{% for campo, rotulo in [('titulo','Título'),('solicitante','Solicitante')] %}
+<label>{{ rotulo }}<input name="{{ campo }}" value="{{ c[campo] or '' }}" maxlength="{{ 80 if campo == 'solicitante' else 100 }}" required></label>
+{% if erros[campo] %}<span class="erro">{{ erros[campo] }}</span>{% endif %}{% endfor %}
+<label>Descrição<textarea name="descricao" maxlength="2000" rows="5" required>{{ c.descricao or '' }}</textarea></label>
+{% if erros.descricao %}<span class="erro">{{ erros.descricao }}</span>{% endif %}
+<label>Prioridade<select name="prioridade">{% for p in prioridades %}
+<option value="{{ p }}" {{ 'selected' if p == c.prioridade }}>{{ p }}</option>{% endfor %}</select></label>
+{% if erros.prioridade %}<span class="erro">{{ erros.prioridade }}</span>{% endif %}
+<button class="btn">Salvar</button> <a href="{{ url_for('chamados.index') }}">Cancelar</a></form>{% endblock %}

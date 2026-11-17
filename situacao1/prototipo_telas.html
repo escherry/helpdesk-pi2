@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protótipo: Help Desk</title>
+<style>
+:root{--bg:#f4f6f8;--tx:#1c2630;--card:#fff;--ln:#9aa6b2;--ac:#12a37f;--hd:#0b3d4f;--er:#c0392b}
+@media (prefers-color-scheme:dark){:root{--bg:#161b20;--tx:#e8edf1;--card:#222a31;--ln:#5b6b78}}
+*{box-sizing:border-box}body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);margin:0;padding:1rem}
+h1{font-size:1.2rem}.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.tabs button{padding:.5rem .9rem;border:1px solid var(--ln);background:var(--card);color:var(--tx);border-radius:6px;cursor:pointer}
+.tabs button.on{background:var(--hd);color:#fff}
+.tela{display:none;max-width:760px;border:2px solid var(--ln);border-radius:8px;overflow:hidden;background:var(--bg)}
+.tela.on{display:block}.top{background:var(--hd);color:#fff;padding:.8rem 1rem;display:flex;justify-content:space-between;align-items:center}
+.bd{padding:1rem;display:grid;gap:.7rem}.b{background:var(--ac);color:#fff;border-radius:5px;padding:.4rem .8rem;font-size:.85rem;display:inline-block}
+.b.g{background:#5b6b78}.b.r{background:var(--er)}.card{background:var(--card);border:1px solid var(--ln);border-left:6px solid var(--ln);border-radius:6px;padding:.8rem}
+.alta{border-left-color:var(--er)}.media{border-left-color:#e6a117}.baixa{border-left-color:var(--ac)}
+.in{border:1px solid var(--ln);background:var(--card);border-radius:5px;padding:.5rem;min-height:2.2rem}.in.err{border-color:var(--er)}
+.er{color:var(--er);font-size:.8rem}.lb{font-size:.8rem;opacity:.8}.row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.pill{border:1px solid var(--ln);border-radius:99px;padding:.15rem .7rem;font-size:.8rem}.pill.on{background:var(--hd);color:#fff}
+.ok{background:#d5f2e8;color:#0b3d2e;padding:.6rem;border-radius:5px}
+.nota{max-width:760px;margin-top:.8rem;font-size:.85rem;opacity:.85}
+</style></head><body>
+<h1>Protótipo de telas: Help Desk (baixa fidelidade)</h1>
+<div class="tabs" id="tabs"></div>
+
+<section class="tela" data-t="1. Lista de chamados">
+<div class="top"><b>Help Desk</b><span class="b">+ Novo chamado</span></div><div class="bd">
+<div class="ok">Chamado aberto com sucesso.</div>
+<div class="row"><span class="pill on">Todos</span><span class="pill">aberto</span><span class="pill">em andamento</span><span class="pill">resolvido</span></div>
+<div class="card alta"><b>#2 · VPN caiu</b><p>Sem acesso à rede interna desde as 9h.</p><div class="lb">Ana · prioridade alta · 17/11/2026 09:12</div>
+<div class="row" style="margin-top:.5rem"><span class="in" style="min-height:0;padding:.3rem .6rem">em andamento ▾</span><span class="b">Salvar</span><span class="b g">Editar</span><span class="b r">Excluir</span></div></div>
+<div class="card baixa"><b>#1 · Trocar mouse</b><p>Mouse com defeito no clique.</p><div class="lb">Bruno · prioridade baixa · 16/11/2026 14:40</div>
+<div class="row" style="margin-top:.5rem"><span class="in" style="min-height:0;padding:.3rem .6rem">aberto ▾</span><span class="b">Salvar</span><span class="b g">Editar</span><span class="b r">Excluir</span></div></div>
+</div></section>
+
+<section class="tela" data-t="2. Novo chamado">
+<div class="top"><b>Help Desk</b><span class="b">+ Novo chamado</span></div><div class="bd">
+<h2 style="margin:0">Novo chamado</h2>
+<div><div class="lb">Título</div><div class="in">Impressora sem toner</div></div>
+<div><div class="lb">Solicitante</div><div class="in">Carla</div></div>
+<div><div class="lb">Descrição</div><div class="in" style="min-height:5rem">A impressora do 2º andar não imprime.</div></div>
+<div><div class="lb">Prioridade</div><div class="in">media ▾</div></div>
+<div class="row"><span class="b">Salvar</span><u>Cancelar</u></div></div></section>
+
+<section class="tela" data-t="3. Erro de validação">
+<div class="top"><b>Help Desk</b><span class="b">+ Novo chamado</span></div><div class="bd">
+<h2 style="margin:0">Novo chamado</h2>
+<div><div class="lb">Título</div><div class="in err"></div><span class="er">Informe um título de até 100 caracteres.</span></div>
+<div><div class="lb">Solicitante</div><div class="in">Carla</div></div>
+<div><div class="lb">Descrição</div><div class="in err" style="min-height:5rem"></div><span class="er">Descreva o problema.</span></div>
+<div><div class="lb">Prioridade</div><div class="in">media ▾</div></div>
+<div class="row"><span class="b">Salvar</span><u>Cancelar</u></div></div></section>
+
+<section class="tela" data-t="4. Excluir (confirmação)">
+<div class="top"><b>Help Desk</b><span class="b">+ Novo chamado</span></div><div class="bd">
+<div class="card alta" style="opacity:.5"><b>#2 · VPN caiu</b></div>
+<div class="card" style="border-left-color:var(--er);text-align:center"><p><b>Excluir o chamado #2?</b></p><div class="row" style="justify-content:center"><span class="b r">OK</span><span class="b g">Cancelar</span></div></div>
+</div></section>
+
+<p class="nota">Mensagens, campos e cores seguem o que está implementado na aplicação: prioridade alta/média/baixa por cor, filtro por status, mensagens de erro por campo e confirmação antes de excluir.</p>
+<script>
+var ts=document.querySelectorAll('.tela'),tb=document.getElementById('tabs');
+ts.forEach(function(t,i){var b=document.createElement('button');b.textContent=t.dataset.t;
+b.onclick=function(){ts.forEach(function(x,j){x.classList.toggle('on',i===j)});[].forEach.call(tb.children,function(y,j){y.classList.toggle('on',i===j)})};
+tb.appendChild(b)});tb.children[0].click();
+</script></body></html>

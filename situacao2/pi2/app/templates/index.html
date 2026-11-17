@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% block content %}
+<nav class="filtros"><a href="/" class="{{ '' if status else 'on' }}">Todos</a>
+{% for s in opcoes %}<a href="/?status={{ s }}" class="{{ 'on' if s == status }}">{{ s.replace('_',' ') }}</a>{% endfor %}</nav>
+{% if not chamados %}<p class="vazio">Nenhum chamado encontrado.</p>{% endif %}
+{% for c in chamados %}<article class="card p-{{ c.prioridade }}">
+<h2>#{{ c.id }} · {{ c.titulo }}</h2>
+<p>{{ c.descricao }}</p>
+<small>{{ c.solicitante }} · prioridade {{ c.prioridade }} · {{ c.criado_em }}</small>
+<div class="acoes">
+<form method="post" action="{{ url_for('chamados.status', id_=c.id) }}">
+<select name="status" aria-label="Status">{% for s in opcoes %}
+<option value="{{ s }}" {{ 'selected' if s == c.status }}>{{ s.replace('_',' ') }}</option>{% endfor %}</select>
+<button>Salvar</button></form>
+<a class="btn sec" href="{{ url_for('chamados.editar', id_=c.id) }}">Editar</a>
+<form method="post" action="{{ url_for('chamados.excluir', id_=c.id) }}"
+ onsubmit="return confirm('Excluir o chamado #{{ c.id }}?')"><button class="perigo">Excluir</button></form>
+</div></article>{% endfor %}{% endblock %}
