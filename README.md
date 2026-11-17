@@ -1,32 +1,51 @@
 # Projeto Integrador Transdisciplinar em Engenharia de Software II
+
 ## Sistema de Controle de Chamados — Help Desk
 
-Pacote revisado em 17/11/2026 com base no enunciado fornecido.
+### Sobre o projeto
 
-### Estrutura
-- `situacao1/`: plano, UML, DER, projeto de dados e protótipo
-- `situacao2/pi2/`: aplicação Flask, esquema SQLite, testes e README técnico; `situacao2/`: manual, roteiro e Git
-- `situacao3/`: revisão técnica, relatório de validação e kit de avaliadores
+Este projeto apresenta o desenvolvimento de um sistema web de gerenciamento de chamados de suporte técnico, com o objetivo de organizar solicitações, acompanhar atendimentos e facilitar o controle das demandas.
 
-### Rodar no Windows (PowerShell)
-```powershell
-cd situacao2/pi2
-py -m venv .venv
-.\.venv\Scripts\python -m pip install -r requirements.txt
-.\.venv\Scripts\python -m pytest -v
-.\.venv\Scripts\python run.py
-```
-Abra http://127.0.0.1:5000
+### Tecnologias utilizadas
 
-### Pendências que exigem ações externas
-1. Publicar o repositório GitHub e fornecer o link.
-2. Gravar vídeo narrado de **pelo menos 5 minutos** demonstrando o código e funcionamento (Situação 2).
-3. Convidar cinco pessoas reais, coletar nome, data, funcionalidades que funcionaram, falharam e não foram testadas, com evidências quando aplicável.
-4. Incorporar melhorias a partir do feedback efetivamente coletado e exportar as cinco avaliações em PDF.
-5. Gravar vídeo de até 5 minutos mostrando o funcionamento e as mudanças da Situação 3.
-6. Conferir o modelo de Atividade de Entrega disponível no AVA (não foi fornecido).
+- Python
+- Flask
+- SQLite
+- HTML e CSS
+- Git e GitHub
 
-**Não afirmar que o projeto é continuação de um PI I documentado sem ter o material original.** A comparação 1.0 → 2.0 é um registro interno da evolução desta proposta.
+### Funcionalidades
 
-### Verificação desta revisão
-A sintaxe Python e as restrições SQL foram verificadas localmente. Os testes pytest da aplicação **não puderam ser executados** neste ambiente, pois o Flask não está instalado e a instalação de dependências ficou indisponível. Rode `python -m pytest -v` no seu computador antes da entrega.
+O sistema permite:
+
+- Cadastrar novos chamados de suporte.
+- Visualizar os chamados registrados.
+- Editar informações dos chamados.
+- Atualizar o status dos atendimentos.
+- Filtrar chamados por status.
+- Excluir chamados.
+
+### Estrutura do projeto
+
+**Situação 1 — Planejamento e modelagem**
+
+Documentação do planejamento, modelagem de dados, diagramas e protótipo do sistema.
+
+**Situação 2 — Desenvolvimento**
+
+Implementação da aplicação web, banco de dados, testes e documentação técnica.
+
+**Situação 3 — Testes e validação**
+
+Documentação dos procedimentos de teste, validação das funcionalidades e propostas de melhoria.
+
+### Como executar
+
+1. Instale o Python e as dependências indicadas em `situacao2/pi2/requirements.txt`.
+2. Acesse a pasta `situacao2/pi2`.
+3. Execute o arquivo `run.py`.
+4. Abra `http://127.0.0.1:5000` no navegador.
+
+### Repositório
+
+O código-fonte e a documentação do projeto estão disponíveis neste repositório GitHub.
